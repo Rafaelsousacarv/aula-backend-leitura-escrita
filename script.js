@@ -1,19 +1,22 @@
+const fsPromises = require('fs/promises');
 const fs = require('fs');
 
 console.log('antes de ler');
 
-// leitura de arquivos síncrono
-// const a = fs.readFileSync('a.txt').toString();
+// const a = fsPromises.readFile('b.txt');
 
-// console.log(a);
+// a.then((data) => {
+//     console.log(data.toString());
+// });
 
-fs.readFile('b.txt', (erro, data) => {
-    if (erro) {
-        console.log(erro);
-    } else {
-        console.log(data.toString());
-    }
-});
+// a.catch((erro) => {
+//     console.log(erro);
+// });
 
+(async function () {
+    const a = await fsPromises.readFile('a.txt');
+
+    console.log(a.toString());
+})();
 
 console.log('depois de ler');
